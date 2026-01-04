@@ -15,12 +15,16 @@
 int main(void)
 {
   HAL_Init();
+  
   SystemClock_Config();
+  
   MX_GPIO_Init();
+  
   MX_TIM1_Init();
+  
   /* USER CODE BEGIN 2 */
 
-  **InitBTS(&B1 ,&htim1, TIM_CHANNEL_1, &htim1,TIM_CHANNEL_2);** //Enter the timer and Channel number for intialization------------------------------------------------------------
+  **InitBTS(&B1 ,&htim1, TIM_CHANNEL_1, &htim1,TIM_CHANNEL_2);** //Enter the timer and Channel number for intialization----------------------------------------------------
 
   while (1)
   {
