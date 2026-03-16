@@ -30,7 +30,7 @@ int main(void)
   while (1)
   {
   
-  #### RotateMoter(&B1,40); // Calling function and Giving PWM Value from 0 - 255 
+  #### RotateMotor(&B1,40); // Calling function and Giving PWM Value from 0 - 255 
 
   }
 
