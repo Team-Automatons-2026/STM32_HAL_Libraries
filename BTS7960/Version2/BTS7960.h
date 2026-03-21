@@ -25,6 +25,8 @@ typedef struct{
 	 TIM_HandleTypeDef *htim2;
 	 uint32_t Channel1;
 	 uint32_t Channel2;
+	 uint8_t bus;
+	 uint16_t freq;
 }BTS;  // BTS it is used to define a object for  1 Motor Driver
 
 
