@@ -25,8 +25,10 @@
  * @param[input]   -   Timer Channel for Pin LPWM
  * @param[input]   -   Timer Address for Pin RPWM
  * @param[input]   -   Timer Channel for Pin RPWM
+ * @param[input]   -   APB Bus number 1 or 2
+ * @param[input]   -   Give PWM Freq in Hz
  *
- * Example Call in main.c - (&B1, &htim1, TIM_CHANNEL_1 ,&htim3, TIM_CHANNEL_2)
+ * Example Call in main.c - (&B1, &htim1, TIM_CHANNEL_1 ,&htim3, TIM_CHANNEL_2 , 2 , 1000)
  *
  * return          -   none
  *
@@ -40,14 +42,16 @@ void InitBTS(BTS *Motor , TIM_HandleTypeDef *htim1, uint32_t Channel1,TIM_Handle
 	Motor->Channel1 = Channel1;
 	Motor->htim2 = htim2;
 	Motor->Channel2 = Channel2;
+	Motor->freq = freq;
+	Motor->bus = bus;
 	uint16_t presclaer = 0;
 	uint16_t AutoReload = 254;
-	if(bus == 1){
-		presclaer = ((9000000)/(AutoReload)*(freq))-1 ;
+	if(Motor->bus == 1){
+		presclaer = ((90000000)/(AutoReload * Motor->freq)-1);
 	}
 
-	if(bus == 2){
-		presclaer = ((18000000)/(AutoReload)*(freq))-1 ;
+	if(Motor->bus == 2){
+		presclaer = ((180000000)/(AutoReload * Motor->freq)-1);
 	}
 	__HAL_TIM_SET_PRESCALER(Motor->htim1, presclaer);
 	__HAL_TIM_SET_AUTORELOAD(Motor->htim1,AutoReload);
