@@ -1,7 +1,7 @@
 /*
  * BTS7960.c
  *
- *  Created on: Mar 15, 2026
+ *  Created on: Mar 27, 2026
  *      Author: Chinmay
  */
 
@@ -47,11 +47,11 @@ void InitBTS(BTS *Motor , TIM_HandleTypeDef *htim1, uint32_t Channel1,TIM_Handle
 	uint16_t presclaer = 0;
 	uint16_t AutoReload = 254;
 	if(Motor->bus == 1){
-		presclaer = (((90000000)/(AutoReload*Motor->freq))-1);
+		presclaer = ((90000000)/(AutoReload * Motor->freq)-1);
 	}
 
 	if(Motor->bus == 2){
-		presclaer = (((180000000)/(AutoReload)*(Motor->freq))-1);
+		presclaer = ((180000000)/(AutoReload * Motor->freq)-1);
 	}
 	__HAL_TIM_SET_PRESCALER(Motor->htim1, presclaer);
 	__HAL_TIM_SET_AUTORELOAD(Motor->htim1,AutoReload);
