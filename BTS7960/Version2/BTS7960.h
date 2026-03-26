@@ -1,7 +1,7 @@
 /*
  * BTS7960.h
  *
- *  Created on: Mar 15, 2026
+ *  Created on: Mar 26, 2026
  *      Author: pchin
  */
 
