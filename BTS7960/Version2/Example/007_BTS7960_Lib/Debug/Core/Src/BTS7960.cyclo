@@ -1,4 +1,4 @@
-../Core/Src/BTS7960.c:39:6:InitBTS	3
-../Core/Src/BTS7960.c:82:6:RotateMotor	14
-../Core/Src/BTS7960.c:112:6:StopMotor	7
-../Core/Src/BTS7960.c:133:6:TestMotor	13
+../Core/Src/BTS7960.c:40:6:InitBTS	5
+../Core/Src/BTS7960.c:97:6:RotateMotor	14
+../Core/Src/BTS7960.c:127:6:StopMotor	7
+../Core/Src/BTS7960.c:148:6:TestMotor	13

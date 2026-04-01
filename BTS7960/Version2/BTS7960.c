@@ -23,9 +23,10 @@
  * @param[input]   -   Address of object that was created before
  * @param[input]   -   Timer Address for Pin LPWM
  * @param[input]   -   Timer Channel for Pin LPWM
+ * @param[input]   -   APB Bus number 1 or 2 for Timer 2
  * @param[input]   -   Timer Address for Pin RPWM
  * @param[input]   -   Timer Channel for Pin RPWM
- * @param[input]   -   APB Bus number 1 or 2
+ * @param[input]   -   APB Bus number 1 or 2 for Timer 2
  * @param[input]   -   Give PWM Freq in Hz
  *
  * Example Call in main.c - (&B1, &htim1, TIM_CHANNEL_1 ,&htim3, TIM_CHANNEL_2 , 2 , 1000)
@@ -36,27 +37,41 @@
  *                     entered as we Standard  STM32 HAL Function Example is written above
  *
  */
-void InitBTS(BTS *Motor , TIM_HandleTypeDef *htim1, uint32_t Channel1,TIM_HandleTypeDef *htim2, uint32_t Channel2,uint8_t bus,uint16_t freq)
+void InitBTS(BTS *Motor , TIM_HandleTypeDef *htim1, uint32_t Channel1,uint8_t bus1,TIM_HandleTypeDef *htim2, uint32_t Channel2,uint8_t bus2,uint16_t freq)
 {
 	Motor->htim1 = htim1;
 	Motor->Channel1 = Channel1;
 	Motor->htim2 = htim2;
 	Motor->Channel2 = Channel2;
 	Motor->freq = freq;
-	Motor->bus = bus;
-	uint16_t presclaer = 0;
-	uint16_t AutoReload = 254;
-	if(Motor->bus == 1){
-		presclaer = ((90000000)/(AutoReload * Motor->freq)-1);
-	}
+	Motor->bus1 = bus1;
+	Motor->bus2 = bus2;
+	uint16_t presclaer1 = 0;
+	uint16_t AutoReload1 = 255;
+	uint16_t presclaer2 = 0;
+	uint16_t AutoReload2 = 255;
 
-	if(Motor->bus == 2){
-		presclaer = ((180000000)/(AutoReload * Motor->freq)-1);
-	}
-	__HAL_TIM_SET_PRESCALER(Motor->htim1, presclaer);
-	__HAL_TIM_SET_AUTORELOAD(Motor->htim1,AutoReload);
-	__HAL_TIM_SET_PRESCALER(Motor->htim2, presclaer);
-	__HAL_TIM_SET_AUTORELOAD(Motor->htim2,AutoReload);
+		if(Motor->bus1 == 1){
+				presclaer1 = ((90000000)/(AutoReload1 * Motor->freq)-1);
+			}
+
+	    if(Motor->bus1 == 2){
+				presclaer1 = ((180000000)/(AutoReload1 * Motor->freq)-1);
+			}
+
+		if(Motor->bus2 == 1){
+				presclaer2 = ((90000000)/(AutoReload2 * Motor->freq)-1);
+		   }
+
+		if(Motor->bus2 == 2){
+				presclaer2 = ((180000000)/(AutoReload2 * Motor->freq)-1);
+		 }
+
+
+	__HAL_TIM_SET_PRESCALER(Motor->htim1, presclaer1);
+	__HAL_TIM_SET_AUTORELOAD(Motor->htim1,AutoReload1);
+	__HAL_TIM_SET_PRESCALER(Motor->htim2, presclaer2);
+	__HAL_TIM_SET_AUTORELOAD(Motor->htim2,AutoReload2);
 	HAL_TIM_GenerateEvent(Motor->htim1, TIM_EVENTSOURCE_UPDATE);
 	HAL_TIM_GenerateEvent(Motor->htim2, TIM_EVENTSOURCE_UPDATE);
 	HAL_TIM_PWM_Start(Motor->htim1, Motor->Channel1);
