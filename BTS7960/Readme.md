@@ -25,7 +25,7 @@ int main(void)
   
   /* USER CODE BEGIN 2 */
 
-####   InitBTS(&B1 ,&htim1, TIM_CHANNEL_1,2, &htim1,TIM_CHANNEL_2,2,20000); //Enter the timer and Channel number for intialization
+####   InitBTS(&B1 , &htim1, TIM_CHANNEL_1, 2 , &htim1,TIM_CHANNEL_2, 2 , 20000); //Enter the timer and Channel number for intialization
 
   while (1)
   {
