@@ -123,10 +123,8 @@ Discarded input sections
  .text          0x00000000        0x0 ./Core/Src/BTS7960.o
  .data          0x00000000        0x0 ./Core/Src/BTS7960.o
  .bss           0x00000000        0x0 ./Core/Src/BTS7960.o
- .text.StopMotor
-                0x00000000       0xa0 ./Core/Src/BTS7960.o
- .text.TestMotor
-                0x00000000      0x138 ./Core/Src/BTS7960.o
+ .text.StopBTS  0x00000000       0xa0 ./Core/Src/BTS7960.o
+ .text.TestBTS  0x00000000      0x138 ./Core/Src/BTS7960.o
  .group         0x00000000        0xc ./Core/Src/main.o
  .group         0x00000000        0xc ./Core/Src/main.o
  .group         0x00000000        0xc ./Core/Src/main.o
@@ -2908,9 +2906,9 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  *(.text*)
  .text.InitBTS  0x080004f4      0x144 ./Core/Src/BTS7960.o
                 0x080004f4                InitBTS
- .text.RotateMotor
+ .text.RotateBTS
                 0x08000638      0x19e ./Core/Src/BTS7960.o
-                0x08000638                RotateMotor
+                0x08000638                RotateBTS
  *fill*         0x080007d6        0x2 
  .text.main     0x080007d8       0x48 ./Core/Src/main.o
                 0x080007d8                main
@@ -3542,9 +3540,9 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 
 .debug_str      0x00000000    0xce2df
  .debug_str     0x00000000    0xcb2f8 ./Core/Src/BTS7960.o
-                              0xcb65d (size before relaxing)
+                              0xcb657 (size before relaxing)
  .debug_str     0x000cb2f8      0x512 ./Core/Src/main.o
-                              0xcbb12 (size before relaxing)
+                              0xcbb10 (size before relaxing)
  .debug_str     0x000cb80a       0xdd ./Core/Src/stm32f4xx_hal_msp.o
                               0xc7f5d (size before relaxing)
  .debug_str     0x000cb8e7       0xc9 ./Core/Src/stm32f4xx_it.o
