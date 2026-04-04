@@ -94,7 +94,7 @@ void InitBTS(BTS *Motor , TIM_HandleTypeDef *htim1, uint32_t Channel1,uint8_t bu
  * @Note           -   none
  *
  */
-void RotateMotor(BTS *Motor , int16_t Value)
+void RotateBTS(BTS *Motor , int16_t Value)
 {
 
 	Motor->PWM_Value = Value;
@@ -124,7 +124,7 @@ void RotateMotor(BTS *Motor , int16_t Value)
  * @Note           -   none
  *
  */
-void StopMotor(BTS *Motor){
+void StopBTS(BTS *Motor){
 	__HAL_TIM_SET_COMPARE(Motor->htim1,Motor->Channel1,0);
 	__HAL_TIM_SET_COMPARE(Motor->htim2,Motor->Channel2,0);
 }
@@ -145,7 +145,7 @@ void StopMotor(BTS *Motor){
  * @Note           -   none
  *
  */
-void TestMotor(BTS *Motor){
+void TestBTS(BTS *Motor){
 	__HAL_TIM_SET_COMPARE(Motor->htim1,Motor->Channel1,30);
 	__HAL_TIM_SET_COMPARE(Motor->htim2,Motor->Channel2,0);
 	HAL_Delay(5000);

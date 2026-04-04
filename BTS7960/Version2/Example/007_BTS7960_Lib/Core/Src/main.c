@@ -101,7 +101,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  RotateMotor(&B1,200);
+	  RotateBTS(&B1,200);
   }
   /* USER CODE END 3 */
 }
