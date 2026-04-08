@@ -7,8 +7,11 @@ int main(void)
 {
 
   if (ADS1115_Init(&hi2c1, ADS1115_DATA_RATE_128, ADS1115_PGA_TWOTHIRDS) == HAL_OK) {
+  
       HAL_Delay(100);
+	  
   } else {
+  
       Error_Handler();
   }
   float ch0_mV = 0;
