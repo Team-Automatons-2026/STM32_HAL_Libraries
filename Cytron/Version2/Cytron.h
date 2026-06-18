@@ -31,7 +31,7 @@ void InitCytron(Cytron *Motor , TIM_HandleTypeDef *htim, uint32_t Channel, GPIO_
 void RotateCytron(Cytron *Motor , int16_t Value);
 void RotateForward(Cytron *Motor);
 void RotateReverse(Cytron *Motor);
-void Stop(Cytron *Motor);
+void StopCytron(Cytron *Motor);
 
 
 #endif /* INC_CYTRON_H_ */
